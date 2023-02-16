@@ -97,7 +97,7 @@ class CPLEX_CMD(LpSolver_CMD):
         if not self.executable(self.path):
             raise PulpSolverError("PuLP: cannot execute " + self.path)
         tmpLp, tmpSol, tmpMst = self.create_tmp_files(lp.name, "lp", "sol", "mst")
-        vs = lp.writeLP(tmpLp, writeSOS=1)
+        vs = lp.writeLP(tmpLp, writeSOS=1, maxLength=255)
         try:
             os.remove(tmpSol)
         except:
